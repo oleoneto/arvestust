@@ -1,0 +1,4 @@
+include LICENSE.md
+include README.md
+recursive-include arvestust/templates *
+recursive-include docs *

@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load cache %}
+
+{% comment %}
+    Describe the template here.
+{% endcomment %}
+
+{% block content %}
+    <p>
+        <a href="{{ object.content_object.get_absolute_url }}">Parent Object</a>
+    </p>
+    <h4>{{ object }}</h4>
+    <div class="content-area">
+        {{ object.content }}
+    </div>
+{% endblock %}

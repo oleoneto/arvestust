@@ -1,0 +1,23 @@
+{% extends 'arvestust.html' %}
+{% load cache %}
+
+{% comment %}
+    Describe the template here.
+{% endcomment %}
+
+{% block header %}{% endblock header %}
+{% block content %}
+    <h2>
+        <a href="{{ object.course.get_absolute_url }}">{{ object }}</a>
+    </h2>
+    <ul>
+        {% for field in object.fields %}
+        <li>{{ field.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
+
+{% block footer %}{% endblock footer %}
+
+{% block scripts %}{% endblock scripts %}
+
