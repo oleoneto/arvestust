@@ -23,7 +23,7 @@ class ArvestustRecord(models.Model):
     updated_at = models.DateTimeField(_('updated at'), auto_now=True, editable=False)
 
     class Meta:
-        db_table = 'active_records'
+        db_table = 'arvestust_records'
         indexes = [models.Index(fields=['created_at'])]
         ordering = ['-created_at']
         abstract = True
