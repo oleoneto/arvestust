@@ -52,7 +52,7 @@ Alternatively, you can also add this app like so::
 3. Run ``python manage.py migrate`` to create the app models.
 
 4. Start the development server and visit [`http://127.0.0.1:8000/admin/`](http://127.0.0.1:8000/admin/)
-   to start a add chat groups and messages (you'll need the Admin app enabled).
+   to start adding objects (you'll need the Admin app enabled).
 
 5. Visit [`http://127.0.0.1:8000/records/`](http://127.0.0.1:8000/records/) to use the app.
 
