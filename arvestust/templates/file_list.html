@@ -1,0 +1,41 @@
+{% extends 'arvestust.html' %}
+{% load arvestust %}
+{% load static %}
+
+{% comment %}
+    Describe the template here.
+{% endcomment %}
+
+{% block main-stylesheet %}
+    <link rel="stylesheet" href="{% static 'assets/css/dashforge.filemgr.css' %}">
+{% endblock %}
+
+{% block page-class %}app-filemgr{% endblock page-class %}
+
+{% block aside %}aside-filemgr{% endblock aside %}
+
+{% block search %}Search files{% endblock %}
+
+{% block content %}
+    <div id="files-app" class="filemgr-wrapper filemgr-wrapper-two">
+        <div class="filemgr-sidebar"></div>
+
+        <div class="filemgr-content">
+            [[ content ]]
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    const app = new Vue({
+      el: "#files-app",
+      delimiters: ["[[", "]]"],
+      data () {
+          return {
+              content: [{{ files|json_dump }}]
+          }
+      },
+    });
+</script>
+{% endblock %}
