@@ -1,8 +1,7 @@
-# arvestust:admin:inlines
-from django.contrib import admin
+from django.contrib.contenttypes import admin
 from ...models import Tag
 
 
-class TagInline(admin.StackedInline):
+class TagInline(admin.GenericStackedInline):
     model = Tag
     extra = 0

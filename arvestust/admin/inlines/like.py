@@ -1,4 +1,3 @@
-# arvestust:admin:inlines
 from django.contrib.contenttypes import admin
 from ...models import Like
 
