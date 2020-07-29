@@ -5,7 +5,7 @@ from .abstracts import ArvestustRecord
 
 
 class Tag(ArvestustRecord):
-    content = models.CharField(max_length=64, verbose_name=_('content'))
+    content = models.CharField(max_length=64, unique=True, verbose_name=_('content'))
 
     class Meta:
         db_table = 'arvestust_tags'
