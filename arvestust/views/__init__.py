@@ -1,9 +1,9 @@
 # arvestust:views
-from .file_list import FileListView
 from .file_detail import FileDetailView
-from .comment_list import CommentListView
+from .file_list import FileListView
 from .comment_detail import CommentDetailView
-from .like_list import LikeListView
+from .comment_list import CommentListView
+from .tag_detail import TagDetailView
 from .tag_list import TagListView
-from .follow_list import FollowListView
-from .save_list import SaveListView
+from .image_detail import ImageDetailView
+from .image_list import ImageListView

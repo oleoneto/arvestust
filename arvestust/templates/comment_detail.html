@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'arvestust.html' %}
 {% load cache %}
 
 {% comment %}
@@ -9,7 +9,7 @@
     <p>
         <a href="{{ object.content_object.get_absolute_url }}">Parent Object</a>
     </p>
-    <h4>{{ object }}</h4>
+    <h4 class="text-bold">{{ object }}</h4>
     <div class="content-area">
         {{ object.content }}
     </div>

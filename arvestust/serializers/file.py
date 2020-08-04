@@ -1,12 +1,10 @@
 from rest_framework import serializers
-from ..models import File
-from ..serializers import LikeSerializer
 from ..serializers import CommentSerializer
+from ..models import File
 
 
 class FileSerializer(serializers.ModelSerializer):
 
-    likes = LikeSerializer(many=True)
     comments = CommentSerializer(many=True)
 
     class Meta:

@@ -2,7 +2,7 @@ from django.utils import timezone
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import path
-from .routes import routes
+from .urls import urlpatterns
 from ..models import File
 
 
@@ -23,6 +23,6 @@ class FileListView(LoginRequiredMixin, ListView):
         return context
 
 
-routes.append(
+urlpatterns.append(
     path('files/', FileListView.as_view(), name='file-list')
 )

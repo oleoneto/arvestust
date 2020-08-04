@@ -59,12 +59,13 @@ class ArvestustFile(ArvestustRecord):
         super(ArvestustFile, self).clean(*args, **kwargs)
 
     def save(self, *args, **kwargs):
+        # Generate a Medium-like URL slugs:
+        self.slug = slugify(f'{self.name}-{str(self.uuid)[-12:]}')
+
         if self.is_private:
             # self.file.storage = settings.PRIVATE_FILE_STORAGE
             self.file.storage = getattr(settings, 'PRIVATE_FILE_STORAGE')
 
-        # Generate a Medium-like URL slugs:
-        self.slug = slugify(f'{str(self.uuid)[-12:]}')
         super().save(*args, **kwargs)
 
     def delete(self, using=None, keep_parents=False):

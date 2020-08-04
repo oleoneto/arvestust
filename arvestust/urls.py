@@ -1,7 +1,5 @@
 # arvestust:urls
 from django.urls import include, path
-from .views.routes import routes
+from .views.urls import urlpatterns
 
 app_name = 'arvestust'
-
-urlpatterns = [] + routes

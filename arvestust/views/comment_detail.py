@@ -3,7 +3,7 @@ from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import path
 from ..models import Comment
-from .routes import routes
+from .urls import urlpatterns
 
 
 class CommentDetailView(LoginRequiredMixin, DetailView):
@@ -16,6 +16,6 @@ class CommentDetailView(LoginRequiredMixin, DetailView):
         return context
 
 
-routes.append(
+urlpatterns.append(
     path('comments/<slug:slug>', CommentDetailView.as_view(), name='comment-detail')
 )

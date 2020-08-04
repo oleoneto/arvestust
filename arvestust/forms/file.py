@@ -1,8 +1,9 @@
 from django import forms
 from ..models.file import File
+from .arvestust_record import ArvestustRecordFormMixin
 
 
-class FileForm(forms.ModelForm):
+class FileForm(ArvestustRecordFormMixin, forms.ModelForm):
     class Meta:
         model = File
-        exclude = ('likes',)
+        exclude = ArvestustRecordFormMixin.Meta.exclude + ('likes', 'uploaded_by')

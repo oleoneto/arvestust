@@ -15,6 +15,6 @@ class CommentAdmin(admin.ModelAdmin):
 
     # Ensure current user is assigned as author of post instance.
     def save_model(self, request, obj, form, change):
-        if not obj.author_id:
-            obj.author = request.user
+        if not obj.user_id:
+            obj.user = request.user
         obj.save()

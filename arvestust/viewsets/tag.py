@@ -12,4 +12,4 @@ class TagViewSet(ArvestustRecordMixin, viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
-# router.register('tags', TagViewSet)
+router.register('tags', TagViewSet)

@@ -1,8 +1,9 @@
 from django import forms
 from ..models.tag import Tag
+from .arvestust_record import ArvestustRecordFormMixin
 
 
-class TagForm(forms.ModelForm):
+class TagForm(ArvestustRecordFormMixin, forms.ModelForm):
     class Meta:
         model = Tag
-        fields = '__all__'
+        exclude = ArvestustRecordFormMixin.Meta.exclude + ('user',)

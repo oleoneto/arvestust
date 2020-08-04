@@ -2,7 +2,7 @@ from django.utils import timezone
 from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import path
-from .routes import routes
+from .urls import urlpatterns
 from ..models import File
 from ..forms import FileForm
 
@@ -17,6 +17,6 @@ class FileDetailView(LoginRequiredMixin, DetailView):
         return context
 
 
-routes.append(
+urlpatterns.append(
     path('files/<slug:slug>', FileDetailView.as_view(), name='file-detail')
 )

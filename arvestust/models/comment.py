@@ -3,9 +3,9 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
-from .like import Like
 from .managers import CommentManager
 from .abstracts import ArvestustRecord
+from .activity import Activity
 
 
 class Comment(ArvestustRecord):
@@ -16,19 +16,15 @@ class Comment(ArvestustRecord):
         verbose_name=_('author')
     )
     content = models.TextField(blank=True, verbose_name=_('content'))
-    likes = GenericRelation(Like, related_query_name='comments')
-    reports = models.ManyToManyField(
-        get_user_model(),
-        related_name='reported_comments',
-        verbose_name=_('reports'),
-        blank=True
-    )
 
-    @property
+    likes = GenericRelation(Activity, related_query_name='comments')
+    votes = GenericRelation(Activity, related_query_name='comments')
+    saves = GenericRelation(Activity, related_query_name='comments')
+    reports = GenericRelation(Activity, related_query_name='comments')
+
     def is_inappropriate(self):
         return self.reports.count() >= 5
 
-    @property
     def has_likes(self):
         return self.likes.count() > 0
 
@@ -40,4 +36,4 @@ class Comment(ArvestustRecord):
     objects = CommentManager()
 
     def get_absolute_url(self):
-        return reverse('comment-detail', kwargs={'slug': self.slug})
+        return reverse('arvestust:comment-detail', kwargs={'slug': self.slug})

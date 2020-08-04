@@ -9,6 +9,7 @@ register = template.Library()
 
 @register.filter
 def json_dump(values):
+    # Return values as JSON data
     data = list(values)
     data = serializers.serialize('json', data)
     return safe(data)
@@ -16,6 +17,7 @@ def json_dump(values):
 
 @register.filter
 def file_mime(file):
+    # Get the mime type of a file (E.g. image/jpeg, text/plain)
     mime = magic.from_file(file, mime=True)
     return mime
 

@@ -2,7 +2,7 @@ from django.utils import timezone
 from django.views.generic import ListView, CreateView
 from django.urls import path
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .routes import routes
+from .urls import urlpatterns
 from ..models import Comment
 from ..forms import CommentForm
 
@@ -23,6 +23,6 @@ class CommentListView(LoginRequiredMixin, ListView, CreateView):
         return context
 
 
-routes.append(
+urlpatterns.append(
     path('comments/', CommentListView.as_view(), name='comment-list')
 )

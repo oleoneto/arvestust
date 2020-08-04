@@ -9,3 +9,4 @@ class ArvestustConfig(AppConfig):
 
     def ready(self):
         from .models import signals
+        from . import audit

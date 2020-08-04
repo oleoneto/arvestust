@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'arvestust.html' %}
 {% load cache %}
 
 {% comment %}
@@ -6,14 +6,15 @@
 {% endcomment %}
 
 {% block content %}
+<div class="container">
+    <h2 class="text-bold">comments</h2>
 
-    <h2>comments</h2>
-
-    <ul>
-    {% for object in object_list %}
-    <li>
-        <a href="{{ object.get_absolute_url }}">{{ object }}</a>
-    </li>
-    {% endfor %}
-    </ul>
+    <div class="row">
+        {% for object in object_list %}
+        <div class="col-md-12">
+            <a href="{{ object.get_absolute_url }}">{{ object.content }}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock content %}

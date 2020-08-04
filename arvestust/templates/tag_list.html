@@ -1,25 +1,34 @@
 {% extends 'arvestust.html' %}
 {% load cache %}
+{% load i18n %}
 
 {% comment %}
     Describe the template here.
 {% endcomment %}
 
-{% block header %}{% endblock header %}
 {% block content %}
+    <h2 class="text-bold pb-3">Tags</h2>
 
-    <h2>tags</h2>
-
-    <ul>
-    {% for object in object_list %}
-    <li>
-        <a href="{{ object.get_absolute_url }}">{{ object }}</a>
-    </li>
+    <div class="card-columns">
+    {% for tag in object_list %}
+        <div class="card border-muted">
+            <div class="card-body">
+                <div class="d-flex flex-row justify-content-start">
+                    <h5 class="card-title">
+                        <a href="{{ tag.get_absolute_url }}">{{ tag.content }}</a>
+                    </h5>
+                </div>
+                <div class="card-text">
+                    <p>
+                        <small class="text-muted">
+                            {% blocktrans with time=tag.created_at|timesince %}
+                            Created {{ time }} ago
+                            {% endblocktrans %}
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
     {% endfor %}
-    </ul>
-{% endblock content %}
-
-{% block footer %}{% endblock footer %}
-
-{% block scripts %}{% endblock scripts %}
-
+    </div>
+{% endblock %}
