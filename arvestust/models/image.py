@@ -1,5 +1,6 @@
 import os
 import uuid
+import inflection
 from django.db import models
 from django.urls import reverse
 from django.template.defaultfilters import slugify
@@ -28,15 +29,6 @@ class Image(ArvestustFile):
         db_table = 'arvestust_images'
         indexes = [models.Index(fields=['created_at'])]
         ordering = ['-created_at']
-
-    def save(self, *args, **kwargs):
-        # Generate a Medium-like URL slugs:
-        # slugify(f'{__SomeCharField__}{str(self.uuid)[-12:]}')
-        self.slug = slugify(f'{str(self.uuid)[-12:]}')
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return f'{self.slug}'
 
     def get_absolute_url(self):
         return reverse('image-detail', kwargs={'slug': self.slug})
