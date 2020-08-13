@@ -30,7 +30,6 @@ class ArvestustFile(ArvestustRecord):
         upload_to=file_upload_path,
         verbose_name=_('file'),
         storage=getattr(settings, 'PUBLIC_FILE_STORAGE'),
-        validators=[validate_file_size, validate_file_type]
     )
     mime = models.CharField(max_length=100, blank=True, editable=False)
     is_private = models.BooleanField(default=False)

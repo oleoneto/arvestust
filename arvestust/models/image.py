@@ -22,7 +22,6 @@ class Image(ArvestustFile):
         upload_to=file_upload_path,
         verbose_name=_('file'),
         storage=getattr(settings, 'PUBLIC_FILE_STORAGE'),
-        validators=[validate_file_size]
     )
 
     class Meta:
